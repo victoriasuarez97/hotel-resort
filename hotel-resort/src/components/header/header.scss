@@ -1,0 +1,17 @@
+.header-container {
+    img {
+      width: 100%;
+      opacity: 0.8;
+    }
+  
+    .header-text-wrapper {
+      margin: auto;
+      color: #ffffff;
+      z-index: 1;
+      position: absolute;
+      top: 20vw;
+      left: 25vw;
+      width: 50vw;
+    }
+}
+  

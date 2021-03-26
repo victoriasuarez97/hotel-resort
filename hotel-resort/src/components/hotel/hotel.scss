@@ -1,0 +1,44 @@
+@import "../../styles.scss";
+
+.card-container {
+  width: 25vw;
+  min-width: 12vw;
+  margin: 20px;
+  border-radius: 30px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+
+  .hotel-photo {
+    width: 25vw;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    top: 0px;
+  }
+
+  .hotel-content {
+    padding: 10px 20px 20px;
+    
+    h2 {
+      font-size: 16px;
+      margin: 10px 0px;
+    }
+  
+    .hotel-description {
+      font-size: 12px;
+      margin: 0px 0px 20px;
+    }
+  
+    .price-wrapper {
+      padding: 5px 15px;
+      border: 1px solid $red;
+      border-radius: 30px;
+      margin: 20px 0px;
+      display: flex;
+      justify-content: center;
+      
+      img {
+        margin: 0px 5px 0px 0px;
+        width: 20px;
+      }
+    }
+  }
+}

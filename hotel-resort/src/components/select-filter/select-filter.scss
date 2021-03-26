@@ -1,0 +1,11 @@
+@import "../../styles.scss";
+
+select {
+  margin: 0px 20px 0px 10px;
+  border-radius: 30px;
+  border: 1px solid $red;
+  padding: 6px 15px;
+  outline: none;
+  cursor: pointer;
+  font-size: 12px;
+}

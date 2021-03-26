@@ -1,0 +1,50 @@
+@import "../../styles.scss";
+
+.subheader-container {
+  margin: 20px;
+
+  .subheader-text {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+  }
+
+  .filter-wrapper {
+    .filter-header {
+      font-size: 18px;
+      padding: 10px;
+    }
+
+    .filters {
+      margin: 20px 0px;
+
+      label {
+        font-size: 12px;
+      }
+      input {
+        margin: 0px 20px 0px 10px;
+        border-radius: 30px;
+        border: 1px solid $red;
+        padding: 6px 15px;
+        outline: none;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .clear-filter {
+        background-color: $green;
+        width: 8vw;
+        margin: 0px 0px 0px 50px;
+      }
+    }
+  }
+}
+
+.hotels-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 1200px;
+  flex-wrap: wrap;
+  margin: auto;
+}

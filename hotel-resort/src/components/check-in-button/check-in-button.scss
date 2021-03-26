@@ -1,0 +1,12 @@
+@import "../../styles.scss";
+
+button {
+  border: none;
+  width: 22vw;
+  height: 5vh;
+  border-radius: 30px;
+  margin: 20px 0px 10px;
+  cursor: pointer;
+  background: $red;
+  color: $white;
+}
