@@ -19,16 +19,21 @@ export const DateFilter = ({
    **/
   const dateSelected = (e) => {
     const dateChosen = e.target.value;
-    setAvailableDate(dateChosen);
+    const today = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
 
-    const dateChosenAsUnix = new Date(
-      dateChosen.replaceAll("-", "/")
-    ).getTime();
-
-    if (id === "date-from") {
-      filterByFromDate(dateChosenAsUnix);
+    if (dateChosen < today) {
+      alert("Tu fecha de ingreso debe ser mayor que la actual");
     } else {
-      filterByToDate(dateChosenAsUnix);
+      setAvailableDate(dateChosen);
+      const dateChosenAsUnix = new Date(
+        dateChosen.replaceAll("-", "/")
+      ).getTime();
+
+      if (id === "date-from") {
+        filterByFromDate(dateChosenAsUnix);
+      } else {
+        filterByToDate(dateChosenAsUnix);
+      }
     }
   };
 

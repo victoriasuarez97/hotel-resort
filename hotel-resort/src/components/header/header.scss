@@ -9,9 +9,14 @@
       color: #ffffff;
       z-index: 1;
       position: absolute;
-      top: 20vw;
+      top: 15vw;
       left: 25vw;
       width: 50vw;
+      padding: 50px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      background-clip: padding-box;
     }
 }
   

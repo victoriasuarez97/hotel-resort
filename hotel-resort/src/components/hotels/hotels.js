@@ -71,23 +71,26 @@ export const Hotels = () => {
         <div className="filter-wrapper">
           <p className="filter-header">Elegí según tu preferencia :)</p>
           <div className="filters">
-            <label htmlFor="date-from">Fecha desde</label>
-            <DateFilter
-              id="date-from"
-              date={dateFrom}
-              filtrar={filteredHotelsByFromDate}
-              stateFromDate={dateFrom}
-              stateToDate={dateTo}
-            />
-            <label htmlFor="date-from">Fecha hasta</label>
-            <DateFilter
-              id="date-to"
-              date={dateTo}
-              filtrar={filteredHotelsByToDate}
-              stateFromDate={dateFrom}
-              stateToDate={dateTo}
-            />
-
+            <div className="date-wrapper">
+              <label htmlFor="date-from">Ingreso</label>
+              <DateFilter
+                id="date-from"
+                date={dateFrom}
+                filtrar={filteredHotelsByFromDate}
+                stateFromDate={dateFrom}
+                stateToDate={dateTo}
+              />
+            </div>
+            <div className="date-wrapper">
+              <label htmlFor="date-from">Salida</label>
+              <DateFilter
+                id="date-to"
+                date={dateTo}
+                filtrar={filteredHotelsByToDate}
+                stateFromDate={dateFrom}
+                stateToDate={dateTo}
+              />
+            </div>
             <SelectFilter
               defaultValue="Todos los países"
               firstValue="Argentina"
