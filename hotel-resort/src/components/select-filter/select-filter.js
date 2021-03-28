@@ -107,7 +107,6 @@ export const SelectFilter = ({
           : matchPrice(hotel.price) === statePriceFilter;
       })
       .filter((hotel) => {
-        console.log(stateSizeFilter, hotel.rooms);
         return stateSizeFilter === "Cualquier tamaño"
           ? hotel
           : matchHotelSize(hotel.rooms) === stateSizeFilter;

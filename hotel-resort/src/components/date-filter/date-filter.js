@@ -50,7 +50,6 @@ export const DateFilter = ({
       );
     });
 
-    console.log(hotelsFiltered);
     filtrar(hotelsFiltered, dateChosenAsUnix);
   };
 
@@ -62,7 +61,6 @@ export const DateFilter = ({
       );
     });
 
-    console.log(hotelsFiltered);
     filtrar(hotelsFiltered, dateChosenAsUnix);
   };
 

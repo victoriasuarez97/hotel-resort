@@ -48,7 +48,7 @@
       }
       .clear-filter {
         background-color: $green;
-        width: 8vw;
+        width: 6vw;
         margin: 0px 0px 0px 20px;
       }
     }
@@ -62,4 +62,25 @@
   width: 1200px;
   flex-wrap: wrap;
   margin: auto;
+
+  .not-available {
+    text-align: center;
+    padding: 50px;
+
+    .title-not-available {
+      font-weight: bold;
+      color: $red;
+    }
+
+    .subtitle-not-available {
+      margin: 10px 0px 0px;
+      font-size: 12px;
+    }
+
+    .sad-face-icon {
+      margin: 10px 0px 20px;
+      width: 50px;
+    }
+  }
+
 }

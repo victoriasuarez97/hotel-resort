@@ -7,5 +7,9 @@ import "./check-in-button.scss";
  **/
 
 export const CheckInButton = () => {
-  return <button>Reservar</button>;
+  return (
+    <button onClick={() => alert("Reserva realizada exitosamente!")}>
+      Reservar
+    </button>
+  );
 };

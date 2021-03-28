@@ -4,6 +4,8 @@ import { Hotel } from "../hotel/hotel";
 import { SelectFilter } from "../select-filter/select-filter";
 import { DateFilter } from "../date-filter/date-filter";
 
+import SadFace from "../../assets/icons/sad.svg";
+
 import "./hotels.scss";
 
 /**
@@ -14,8 +16,8 @@ import "./hotels.scss";
 
 export const Hotels = () => {
   const [data, setData] = useState(hotelsData);
-  const [dateFrom, setDateFrom] = useState(new Date());
-  const [dateTo, setDateTo] = useState(new Date());
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
   const [country, setCountry] = useState("Todos los países");
   const [price, setPrice] = useState("Cualquier precio");
   const [size, setSize] = useState("Cualquier tamaño");
@@ -58,7 +60,12 @@ export const Hotels = () => {
    **/
 
   const clearFilter = () => {
-    return setData(hotelsData);
+    setDateFrom("");
+    setDateTo("");
+    setCountry("Todos los países");
+    setPrice("Cualquier precio");
+    setSize("Cualquier tamaño");
+    setData(hotelsData);
   };
 
   return (
@@ -131,9 +138,20 @@ export const Hotels = () => {
         </div>
       </div>
       <div className="hotels-container">
-        {data.map((hotel, i) => (
-          <Hotel hotel={hotel} key={i} />
-        ))}
+        {!data.length ? (
+          <div className="not-available">
+            <img src={SadFace} alt="sad face" className="sad-face-icon" />
+            <p className="title-not-available">
+              No hay hoteles disponibles para mostrar con estas opciones
+            </p>
+            <p className="subtitle-not-available">
+              Por favor, cambiá alguna de las opciones previamente seleccionadas
+              para que puedas seguir viendo nuestra selección de hoteles
+            </p>
+          </div>
+        ) : (
+          data.map((hotel, i) => <Hotel hotel={hotel} key={i} />)
+        )}
       </div>
     </>
   );
