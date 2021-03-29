@@ -47,9 +47,15 @@
   
       }
       .clear-filter {
-        background-color: $green;
-        width: 6vw;
-        margin: 0px 0px 0px 20px;
+        border: none;
+        width: 12vw;
+        height: 30px;
+        border-radius: 30px;
+        margin: 20px 0px 10px;
+        cursor: pointer;
+        background: $green;
+        color: $white;
+        font-family: 'Poppins', sans-serif;
       }
     }
   }

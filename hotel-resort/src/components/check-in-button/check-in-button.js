@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { ModalBookHotel } from "../modal-book-hotel/modal-book-hotel";
 
 import "./check-in-button.scss";
 
@@ -7,9 +8,12 @@ import "./check-in-button.scss";
  **/
 
 export const CheckInButton = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <button onClick={() => alert("Reserva realizada exitosamente!")}>
-      Reservar
-    </button>
+    <>
+      <button onClick={() => setShowModal(true)}>Reservar</button>
+      <ModalBookHotel showModal={showModal} setShowModal={setShowModal} />
+    </>
   );
 };

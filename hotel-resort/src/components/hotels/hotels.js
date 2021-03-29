@@ -150,7 +150,14 @@ export const Hotels = () => {
             </p>
           </div>
         ) : (
-          data.map((hotel, i) => <Hotel hotel={hotel} key={i} />)
+          data.map((hotel, i) => (
+            <Hotel
+              hotel={hotel}
+              key={i}
+              dateFromChosen={dateFrom}
+              dateToChosen={dateTo}
+            />
+          ))
         )}
       </div>
     </>
