@@ -43,5 +43,19 @@
           width: 14vw;
         }
       }
+
+      .booked-succesfully {
+          text-align: center;
+
+          img {
+              width: 50px;
+              margin: 0px 0px 30px;
+          }
+
+          button {
+              width: 10vw;
+              margin: 80px 0px 0px;
+          }
+      }
     }
 }
