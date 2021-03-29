@@ -40,7 +40,15 @@ export const Hotel = ({ hotel, dateFromChosen, dateToChosen }) => {
           location={`${hotel.city}, ${hotel.country}`}
         />
         <div className="price-wrapper">{prices}</div>
-        <button onClick={() => setShowModal(true)}>Reservar</button>
+        <button
+          onClick={() =>
+            dateFromChosen && dateToChosen
+              ? setShowModal(true)
+              : setShowModal(false)
+          }
+        >
+          Reservar
+        </button>
       </div>
       <ModalBookHotel
         hotel={hotel}

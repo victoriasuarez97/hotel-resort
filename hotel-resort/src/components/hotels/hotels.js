@@ -21,6 +21,11 @@ export const Hotels = () => {
   const [country, setCountry] = useState("Todos los países");
   const [price, setPrice] = useState("Cualquier precio");
   const [size, setSize] = useState("Cualquier tamaño");
+  const [baseDateFromState] = useState("");
+  const [baseDateToState] = useState("");
+  const [baseCountryState] = useState("Todos los países");
+  const [basePriceState] = useState("Cualquier precio");
+  const [baseSizeState] = useState("Cualquier tamaño");
 
   /**
    * @description filteredBy... función para recibir los hoteles filtrados.
@@ -60,11 +65,11 @@ export const Hotels = () => {
    **/
 
   const clearFilter = () => {
-    setDateFrom("");
-    setDateTo("");
-    setCountry("Todos los países");
-    setPrice("Cualquier precio");
-    setSize("Cualquier tamaño");
+    setDateFrom(baseDateFromState);
+    setDateTo(baseDateToState);
+    setCountry(baseCountryState);
+    setPrice(basePriceState);
+    setSize(baseSizeState);
     setData(hotelsData);
   };
 
@@ -82,7 +87,6 @@ export const Hotels = () => {
               <label htmlFor="date-from">Ingreso</label>
               <DateFilter
                 id="date-from"
-                date={dateFrom}
                 filtrar={filteredHotelsByFromDate}
                 stateFromDate={dateFrom}
                 stateToDate={dateTo}
@@ -92,7 +96,6 @@ export const Hotels = () => {
               <label htmlFor="date-from">Salida</label>
               <DateFilter
                 id="date-to"
-                date={dateTo}
                 filtrar={filteredHotelsByToDate}
                 stateFromDate={dateFrom}
                 stateToDate={dateTo}
@@ -105,6 +108,8 @@ export const Hotels = () => {
               thirdValue="Chile"
               forthValue="Uruguay"
               filtrar={filteredHotelsByCountry}
+              stateFromDate={dateFrom}
+              stateToDate={dateTo}
               stateCountryFilter={country}
               statePriceFilter={price}
               stateSizeFilter={size}
@@ -116,6 +121,8 @@ export const Hotels = () => {
               thirdValue="$$$"
               forthValue="$$$$"
               filtrar={filteredHotelsByPrice}
+              stateFromDate={dateFrom}
+              stateToDate={dateTo}
               stateCountryFilter={country}
               statePriceFilter={price}
               stateSizeFilter={size}
@@ -126,12 +133,14 @@ export const Hotels = () => {
               secondValue="Hotel mediano"
               thirdValue="Hotel grande"
               filtrar={filteredHotelsBySize}
+              stateFromDate={dateFrom}
+              stateToDate={dateTo}
               stateCountryFilter={country}
               statePriceFilter={price}
               stateSizeFilter={size}
             />
 
-            <button className="clear-filter" onClick={clearFilter}>
+            <button className="clear-filter" onClick={() => clearFilter()}>
               Limpiar
             </button>
           </div>
