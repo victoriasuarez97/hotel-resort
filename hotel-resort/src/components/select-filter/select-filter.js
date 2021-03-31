@@ -25,12 +25,6 @@ export const SelectFilter = ({
 }) => {
   let [option, setOption] = useState(undefined);
 
-  const hotelsFilteredByDate = hotelsData.filter(
-    (hotel) =>
-      stateFromDate >= hotel.availabilityFrom &&
-      stateToDate <= hotel.availabilityTo
-  );
-
   /**
    * @description Función optionSelected para determinar de qué filtro proviene el
    * event.target.value para realizar el filtrado
@@ -103,7 +97,7 @@ export const SelectFilter = ({
    * @param e objeto evento
    **/
   const filterByCountry = (e) => {
-    let newHotelsList = hotelsFilteredByDate
+    let newHotelsList = hotelsData
       .filter((hotel) => {
         return e.target.value === "Todos los países"
           ? hotel
@@ -124,7 +118,7 @@ export const SelectFilter = ({
   };
 
   const filterByPrice = (e) => {
-    let newHotelsList = hotelsFilteredByDate
+    let newHotelsList = hotelsData
       .filter((hotel) => {
         return e.target.value === "Cualquier precio"
           ? hotel
@@ -145,7 +139,7 @@ export const SelectFilter = ({
   };
 
   const filterBySize = (e) => {
-    let newHotelsList = hotelsFilteredByDate
+    let newHotelsList = hotelsData
       .filter((hotel) => {
         return e.target.value === "Cualquier tamaño"
           ? hotel

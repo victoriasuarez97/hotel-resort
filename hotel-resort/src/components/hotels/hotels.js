@@ -73,6 +73,25 @@ export const Hotels = () => {
     setData(hotelsData);
   };
 
+  const formatDate = () => {
+    let dateFromFormatted;
+    let dateToFormatted;
+
+    const dateFromUnixToDate = new Date(dateFrom);
+    dateFromFormatted = `${dateFromUnixToDate.getDate()}/${
+      dateFromUnixToDate.getMonth() + 1
+    }/${dateFromUnixToDate.getYear() - 100}`;
+
+    const dateToUnixToDate = new Date(dateTo);
+    dateToFormatted = `${dateToUnixToDate.getDate()}/${
+      dateToUnixToDate.getMonth() + 1
+    }/${dateToUnixToDate.getYear() - 100}`;
+
+    return [dateFromFormatted, dateToFormatted];
+  };
+
+  const dates = formatDate();
+
   return (
     <>
       <div className="subheader-container">
@@ -82,6 +101,11 @@ export const Hotels = () => {
 
         <div className="filter-wrapper">
           <p className="filter-header">Elegí según tu preferencia :)</p>
+          <p className="filter-description">
+            {dateTo
+              ? `Elegiste reservar desde ${dates[0]} hasta ${dates[1]} en ${country}`
+              : ""}
+          </p>
           <div className="filters">
             <div className="date-wrapper">
               <label htmlFor="date-from">Ingreso</label>
