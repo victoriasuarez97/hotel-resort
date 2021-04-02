@@ -44,8 +44,8 @@
           font-size: 12px;
           width: 180px;
         }
-  
       }
+      
       .clear-filter {
         border: none;
         width: 8vw;
@@ -56,6 +56,11 @@
         background: $green;
         color: $white;
         font-family: 'Poppins', sans-serif;
+        outline: none;
+
+        &:hover {
+          background-color: #056666;
+        }
       }
     }
 
