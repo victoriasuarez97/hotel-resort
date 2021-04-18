@@ -12,26 +12,35 @@ export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
   /**
    * @description función que trae la fecha seleccionada en el input date,
    * y la manda a su respecto filtrado de acuerdo al id del input.
-   * @param e objeto evento
+   * @param {objet} e objeto evento
    **/
   const dateSelected = (e) => {
-    console.log(e.target.value);
-    console.log(typeof e.target.value);
-    const dateChosen = new Date((e.target.value).replace(/-/g, "/")).getTime();
-    const today = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
+    const dateChosen = e.target.value;
+    const dateChosenAsUnix = new Date(dateChosen.replace(/-/g, "/")).getTime();
+    const today = new Date().getTime()
 
-    if (dateChosen < today) {
+    if (dateChosenAsUnix < today) {
       setOpenModal(true);
     } else {
       setAvailableDate(dateChosen);
-
-      if (id === "date-from") {
-        filterByFromDate(dateChosen);
-      } else {
-        filterByToDate(dateChosen);
-      }
     }
-  };
+
+    if (id === "date-from" && stateFromDate && stateToDate) {
+      filterByFromDate(dateChosenAsUnix);
+    } else if (stateFromDate && stateToDate) {
+      filterByToDate(dateChosenAsUnix);
+    }
+  }
+
+  /**
+   * @description funcion para prevenir reload del website cuando se cierra el modal
+   * de fecha elegida previa al día actual.
+   * @param {object} e, objeto evento.
+   */
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOpenModal(false);
+  }
 
   /**
    * @description filterBy... función para filtrar y llevar la data a su componente padre,
@@ -70,7 +79,7 @@ export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
             className="straight-icon"
           />
           <h3>Tu fecha de ingreso debe ser mayor a la actual</h3>
-          <button onClick={() => setOpenModal(false)}>Aceptar</button>
+          <button onClick={handleClick}>Aceptar</button>
         </div>
       </div>
       <div>
