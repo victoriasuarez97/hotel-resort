@@ -16,19 +16,19 @@ import "./hotels.scss";
 
 export const Hotels = () => {
   const [data, setData] = useState(hotelsData);
-  const [dateFrom, setDateFrom] = useState("");
-  const [dateTo, setDateTo] = useState("");
+  const [dateFrom, setDateFrom] = useState();
+  const [dateTo, setDateTo] = useState();
   const [country, setCountry] = useState("Todos los países");
   const [price, setPrice] = useState("Cualquier precio");
   const [size, setSize] = useState("Cualquier tamaño");
 
   /**
    * @description filteredBy... función para recibir los hoteles filtrados.
-   * @param hotelsFiltered representa los hoteles filtrados provenientes
-   * del componente Select, recibidos desde la prop filtrar y seteado con el estado
-   * del total de los hoteles
-   * @param state representa el input seleccionado por el usuario,
-   * para que se tenga en cuenta con el resto de los filtros.
+   * @param {array} hotelsFiltered representa los hoteles filtrados provenientes
+   *        del componente Select, recibidos desde la prop filtrar y seteado con el estado
+   *        del total de los hoteles
+   *        {string} state representa el input seleccionado por el usuario,
+   *        para que se tenga en cuenta con el resto de los filtros.
    **/
   const filteredHotelsByFromDate = (hotelsFiltered, state) => {
     setDateFrom(state);
@@ -63,7 +63,12 @@ export const Hotels = () => {
     setData(hotelsData);
   };
 
-  const formatDate = () => {
+  /**
+   * @description formatDateToShow, función para formatear fechas para mostrar en el inicio al usuario
+   * cuando se comienza a seleccionar las fechas.
+   * @returns {array} fechas dateFrom y dateTo formateadas en un array.
+   **/
+  const formatDateToShow = () => {
     let dateFromFormatted;
     let dateToFormatted;
 
@@ -80,7 +85,7 @@ export const Hotels = () => {
     return [dateFromFormatted, dateToFormatted];
   };
 
-  const dates = formatDate();
+  const dates = formatDateToShow();
 
   return (
     <>

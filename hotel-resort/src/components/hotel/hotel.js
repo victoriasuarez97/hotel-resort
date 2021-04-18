@@ -10,9 +10,9 @@ import "./hotel.scss";
 
 /**
  * @description componente para la card de los hoteles provenientes del data.js
- * @params hotel, recibe la data de los hoteles desde su padre, hotel.js
- *         dateFromChosen, recibe fecha seleccionada de ingreso desde su padre, hotel.js
- *         dateToChosen, recibe fecha seleccionada de salida desde su padre, hotel.js
+ * @params {array} hotel, recibe la data de los hoteles desde su padre, hotel.js
+ *         {number} dateFromChosen, recibe fecha seleccionada de ingreso desde su padre, hotel.js
+ *         {number} dateToChosen, recibe fecha seleccionada de salida desde su padre, hotel.js
  **/
 
 export const Hotel = ({ hotel, dateFromChosen, dateToChosen }) => {
@@ -20,7 +20,7 @@ export const Hotel = ({ hotel, dateFromChosen, dateToChosen }) => {
 
   /**
    * For loop para mostrar íconos de precio según el número proveniente
-   * de daja.js de la propiedad price.
+   * de data.js de la propiedad price.
    **/
   const prices = [];
   for (let i = 0; i < hotel.price; i++) {

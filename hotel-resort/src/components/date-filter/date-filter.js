@@ -6,7 +6,7 @@ import straightIcon from "../../assets/icons/straight.svg";
 import "./date-filter.scss";
 
 export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
-  let [availableDate, setAvailableDate] = useState("");
+  let [availableDate, setAvailableDate] = useState();
   const [openModal, setOpenModal] = useState(false);
 
   /**
@@ -15,21 +15,20 @@ export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
    * @param e objeto evento
    **/
   const dateSelected = (e) => {
-    const dateChosen = e.target.value;
+    console.log(e.target.value);
+    console.log(typeof e.target.value);
+    const dateChosen = new Date((e.target.value).replace(/-/g, "/")).getTime();
     const today = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
 
     if (dateChosen < today) {
       setOpenModal(true);
     } else {
       setAvailableDate(dateChosen);
-      const dateChosenAsUnix = new Date(
-        dateChosen.replaceAll("-", "/")
-      ).getTime();
 
       if (id === "date-from") {
-        filterByFromDate(dateChosenAsUnix);
+        filterByFromDate(dateChosen);
       } else {
-        filterByToDate(dateChosenAsUnix);
+        filterByToDate(dateChosen);
       }
     }
   };
@@ -37,7 +36,7 @@ export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
   /**
    * @description filterBy... función para filtrar y llevar la data a su componente padre,
    * para que se vea reflejada en la vista.
-   * @param dateChosenAsUnix fecha seleccionada en tiempo unix.
+   * @param {number} dateChosenAsUnix fecha seleccionada en tiempo unix.
    **/
   const filterByFromDate = (dateChosenAsUnix) => {
     let hotelsFiltered = hotelsData.filter((hotel) => {
