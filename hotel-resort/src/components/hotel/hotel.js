@@ -15,7 +15,11 @@ import "./hotel.scss";
  *         {number} dateToChosen, recibe fecha seleccionada de salida desde su padre, hotel.js
  **/
 
-export const Hotel = ({ hotel, dateFromChosen, dateToChosen }) => {
+export const Hotel = ({
+  hotel,
+  dateFromChosen,
+  dateToChosen
+}) => {
   const [showModal, setShowModal] = useState(false);
 
   /**

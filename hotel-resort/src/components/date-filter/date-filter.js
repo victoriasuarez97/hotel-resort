@@ -5,8 +5,13 @@ import straightIcon from "../../assets/icons/straight.svg";
 
 import "./date-filter.scss";
 
-export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
-  let [availableDate, setAvailableDate] = useState();
+export const DateFilter = ({
+  id,
+  filtrar,
+  stateFromDate,
+  stateToDate
+}) => {
+  let [availableDate, setAvailableDate] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
   /**
@@ -25,9 +30,9 @@ export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
       setAvailableDate(dateChosen);
     }
 
-    if (id === "date-from" && stateFromDate && stateToDate) {
+    if (id === "date-from" && stateToDate) {
       filterByFromDate(dateChosenAsUnix);
-    } else if (stateFromDate && stateToDate) {
+    } else {
       filterByToDate(dateChosenAsUnix);
     }
   }
@@ -50,8 +55,8 @@ export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
   const filterByFromDate = (dateChosenAsUnix) => {
     let hotelsFiltered = hotelsData.filter((hotel) => {
       return (
-        hotel.availabilityFrom >= dateChosenAsUnix &&
-        stateToDate < hotel.availabilityTo
+        dateChosenAsUnix >= hotel.availabilityFrom &&
+        hotel.availabilityTo <= stateToDate  
       );
     });
 
@@ -61,8 +66,8 @@ export const DateFilter = ({ id, filtrar, stateFromDate, stateToDate }) => {
   const filterByToDate = (dateChosenAsUnix) => {
     let hotelsFiltered = hotelsData.filter((hotel) => {
       return (
-        hotel.availabilityFrom >= stateFromDate &&
-        dateChosenAsUnix < hotel.availabilityTo
+        stateFromDate >= hotel.availabilityFrom &&
+        hotel.availabilityTo <= dateChosenAsUnix
       );
     });
 

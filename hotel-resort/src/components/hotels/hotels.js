@@ -16,8 +16,8 @@ import "./hotels.scss";
 
 export const Hotels = () => {
   const [data, setData] = useState(hotelsData);
-  const [dateFrom, setDateFrom] = useState();
-  const [dateTo, setDateTo] = useState();
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
   const [country, setCountry] = useState("Todos los países");
   const [price, setPrice] = useState("Cualquier precio");
   const [size, setSize] = useState("Cualquier tamaño");
@@ -113,7 +113,7 @@ export const Hotels = () => {
                 />
               </div>
               <div className="date-wrapper">
-                <label htmlFor="date-from">Salida</label>
+                <label htmlFor="date-to">Salida</label>
                 <DateFilter
                   id="date-to"
                   filtrar={filteredHotelsByToDate}

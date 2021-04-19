@@ -99,6 +99,10 @@ export const SelectFilter = ({
   const filterByCountry = (e) => {
     let newHotelsList = hotelsData
       .filter((hotel) => {
+        return stateFromDate >= hotel.availabilityFrom &&
+        hotel.availabilityTo <= stateToDate 
+      })
+      .filter((hotel) => {
         return e.target.value === "Todos los países"
           ? hotel
           : hotel.country === e.target.value;
@@ -120,6 +124,10 @@ export const SelectFilter = ({
   const filterByPrice = (e) => {
     let newHotelsList = hotelsData
       .filter((hotel) => {
+        return stateFromDate >= hotel.availabilityFrom &&
+        hotel.availabilityTo <= stateToDate 
+      })
+      .filter((hotel) => {
         return e.target.value === "Cualquier precio"
           ? hotel
           : matchPrice(hotel.price) === e.target.value;
@@ -140,6 +148,10 @@ export const SelectFilter = ({
 
   const filterBySize = (e) => {
     let newHotelsList = hotelsData
+      .filter((hotel) => {
+        return stateFromDate >= hotel.availabilityFrom &&
+        hotel.availabilityTo <= stateToDate 
+      })
       .filter((hotel) => {
         return e.target.value === "Cualquier tamaño"
           ? hotel
