@@ -30,7 +30,7 @@ export const DateFilter = ({
       setAvailableDate(dateChosen);
     }
 
-    if (id === "date-from" && stateToDate) {
+    if (id === "date-from") {
       filterByFromDate(dateChosenAsUnix);
     } else {
       filterByToDate(dateChosenAsUnix);
@@ -54,10 +54,13 @@ export const DateFilter = ({
    **/
   const filterByFromDate = (dateChosenAsUnix) => {
     let hotelsFiltered = hotelsData.filter((hotel) => {
-      return (
-        dateChosenAsUnix >= hotel.availabilityFrom &&
-        hotel.availabilityTo <= stateToDate  
-      );
+      if (stateToDate) {
+        return (
+          dateChosenAsUnix >= hotel.availabilityFrom &&
+          hotel.availabilityTo <= stateToDate  
+        );
+      }
+      return hotel;
     });
 
     filtrar(hotelsFiltered, dateChosenAsUnix);

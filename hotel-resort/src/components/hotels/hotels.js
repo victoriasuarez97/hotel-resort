@@ -60,6 +60,8 @@ export const Hotels = () => {
    **/
 
   const clearFilter = () => {
+    setDateFrom("");
+    setDateTo("");
     setData(hotelsData);
   };
 
