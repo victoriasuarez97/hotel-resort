@@ -30,28 +30,28 @@ export const Hotels = () => {
    *        {string} state representa el input seleccionado por el usuario,
    *        para que se tenga en cuenta con el resto de los filtros.
    **/
-  const filteredHotelsByFromDate = (hotelsFiltered, state) => {
-    setDateFrom(state);
+  const filteredHotelsByFromDate = (hotelsFiltered, dateFromSelected) => {
+    setDateFrom(dateFromSelected);
     setData(hotelsFiltered);
   };
 
-  const filteredHotelsByToDate = (hotelsFiltered, state) => {
-    setDateTo(state);
+  const filteredHotelsByToDate = (hotelsFiltered, dateToSelected) => {
+    setDateTo(dateToSelected);
     setData(hotelsFiltered);
   };
 
-  const filteredHotelsByCountry = (hotelsFiltered, state) => {
-    setCountry(state);
+  const filteredHotelsByCountry = (hotelsFiltered, countrySelected) => {
+    setCountry(countrySelected);
     setData(hotelsFiltered);
   };
 
-  const filteredHotelsByPrice = (hotelsFiltered, state) => {
-    setPrice(state);
+  const filteredHotelsByPrice = (hotelsFiltered, priceSelected) => {
+    setPrice(priceSelected);
     setData(hotelsFiltered);
   };
 
-  const filteredHotelsBySize = (hotelsFiltered, state) => {
-    setSize(state);
+  const filteredHotelsBySize = (hotelsFiltered, sizeSelected) => {
+    setSize(sizeSelected);
     setData(hotelsFiltered);
   };
 
@@ -62,6 +62,9 @@ export const Hotels = () => {
   const clearFilter = () => {
     setDateFrom("");
     setDateTo("");
+    setCountry("");
+    setPrice("");
+    setSize("");
     setData(hotelsData);
   };
 
@@ -154,6 +157,7 @@ export const Hotels = () => {
                 firstValue="Hotel pequeño"
                 secondValue="Hotel mediano"
                 thirdValue="Hotel grande"
+                forthValue={undefined}
                 filtrar={filteredHotelsBySize}
                 stateFromDate={dateFrom}
                 stateToDate={dateTo}

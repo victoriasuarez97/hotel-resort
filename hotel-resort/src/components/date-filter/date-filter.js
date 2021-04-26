@@ -21,7 +21,7 @@ export const DateFilter = ({
    **/
   const dateSelected = (e) => {
     const dateChosen = e.target.value;
-    const dateChosenAsUnix = new Date(dateChosen.replace(/-/g, "/")).getTime();
+    const dateChosenAsUnix = new Date(dateChosen.replace(/-/g, "/")).getTime() + 86300000;
     const today = new Date().getTime()
 
     if (dateChosenAsUnix < today) {
@@ -54,13 +54,12 @@ export const DateFilter = ({
    **/
   const filterByFromDate = (dateChosenAsUnix) => {
     let hotelsFiltered = hotelsData.filter((hotel) => {
-      if (stateToDate) {
         return (
-          dateChosenAsUnix >= hotel.availabilityFrom &&
-          hotel.availabilityTo <= stateToDate  
+          !stateToDate
+          ? hotel
+          : dateChosenAsUnix >= hotel.availabilityFrom &&
+          stateToDate <= hotel.availabilityTo
         );
-      }
-      return hotel;
     });
 
     filtrar(hotelsFiltered, dateChosenAsUnix);
@@ -70,7 +69,7 @@ export const DateFilter = ({
     let hotelsFiltered = hotelsData.filter((hotel) => {
       return (
         stateFromDate >= hotel.availabilityFrom &&
-        hotel.availabilityTo <= dateChosenAsUnix
+        dateChosenAsUnix  <= hotel.availabilityTo
       );
     });
 

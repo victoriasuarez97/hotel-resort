@@ -99,10 +99,6 @@ export const SelectFilter = ({
   const filterByCountry = (e) => {
     let newHotelsList = hotelsData
       .filter((hotel) => {
-        return stateFromDate >= hotel.availabilityFrom &&
-        hotel.availabilityTo <= stateToDate 
-      })
-      .filter((hotel) => {
         return e.target.value === "Todos los países"
           ? hotel
           : hotel.country === e.target.value;
@@ -116,6 +112,18 @@ export const SelectFilter = ({
         return stateSizeFilter === "Cualquier tamaño"
           ? hotel
           : matchHotelSize(hotel.rooms) === stateSizeFilter;
+      })
+      .filter((hotel) => {
+        return !stateFromDate 
+        ? hotel
+        : stateFromDate >= hotel.availabilityFrom &&
+        stateToDate <= hotel.availabilityTo   
+      })
+      .filter((hotel) => {
+        return !stateToDate === ""
+          ? hotel
+          : stateToDate <= hotel.availabilityTo &&
+          stateFromDate >= hotel.availabilityFrom;
       });
 
     filtrar(newHotelsList, e.target.value);
@@ -123,10 +131,6 @@ export const SelectFilter = ({
 
   const filterByPrice = (e) => {
     let newHotelsList = hotelsData
-      .filter((hotel) => {
-        return stateFromDate >= hotel.availabilityFrom &&
-        hotel.availabilityTo <= stateToDate 
-      })
       .filter((hotel) => {
         return e.target.value === "Cualquier precio"
           ? hotel
@@ -141,6 +145,18 @@ export const SelectFilter = ({
         return stateSizeFilter === "Cualquier tamaño"
           ? hotel
           : matchHotelSize(hotel.rooms) === stateSizeFilter;
+      })
+      .filter((hotel) => {
+        return !stateFromDate 
+        ? hotel
+        : stateFromDate > hotel.availabilityFrom &&
+        stateToDate < hotel.availabilityTo   
+      })
+      .filter((hotel) => {
+        return !stateToDate === ""
+          ? hotel
+          : stateToDate < hotel.availabilityTo &&
+          stateFromDate > hotel.availabilityFrom;
       });
 
     filtrar(newHotelsList, e.target.value);
@@ -148,10 +164,6 @@ export const SelectFilter = ({
 
   const filterBySize = (e) => {
     let newHotelsList = hotelsData
-      .filter((hotel) => {
-        return stateFromDate >= hotel.availabilityFrom &&
-        hotel.availabilityTo <= stateToDate 
-      })
       .filter((hotel) => {
         return e.target.value === "Cualquier tamaño"
           ? hotel
@@ -166,6 +178,18 @@ export const SelectFilter = ({
         return statePriceFilter === "Cualquier precio"
           ? hotel
           : matchPrice(hotel.price) === statePriceFilter;
+      })
+      .filter((hotel) => {
+        return !stateFromDate 
+        ? hotel
+        : stateFromDate > hotel.availabilityFrom &&
+        stateToDate < hotel.availabilityTo   
+      })
+      .filter((hotel) => {
+        return !stateToDate === ""
+          ? hotel
+          : stateToDate < hotel.availabilityTo &&
+          stateFromDate > hotel.availabilityFrom;
       });
 
     filtrar(newHotelsList, e.target.value);
