@@ -30,10 +30,14 @@
       .hotel-chosen {
         margin: 10px 0px;
       }
-  
-      .hotel-name {
-        font-size: 18px;
-        margin: 0px 0px 10px;
+
+      .hotel-chosen-data {
+        margin: 30px 0px;
+
+        .hotel-name {
+          font-size: 18px;
+          margin: 0px 0px 10px;
+        }
       }
   
       .buttons-wrapper {
@@ -41,7 +45,7 @@
         justify-content: space-between;
   
         button {
-          margin: 40px 0px 30px;
+          margin: 30px 0px;
           width: 14vw;
         }
       }

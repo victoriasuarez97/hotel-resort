@@ -19,8 +19,15 @@ export const Hotels = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [country, setCountry] = useState("Todos los países");
-  const [price, setPrice] = useState("Cualquier precio");
-  const [size, setSize] = useState("Cualquier tamaño");
+  const [price, setPrice] = useState("Todos los precios");
+  const [size, setSize] = useState("Todos los tamaños");
+
+  /**
+   * @description constantes para definir opciones para cada select de filtros.
+   */
+  const countries = ["Todos los países", "Argentina", "Brasil", "Chile", "Uruguay"];
+  const prices = ["Todos los precios", "$", "$$", "$$$", "$$$$"];
+  const sizes = ["Todos los tamaños", "Hotel pequeño", "Hotel mediano", "Hotel grande"];
 
   /**
    * @description filteredBy... función para recibir los hoteles filtrados.
@@ -58,14 +65,13 @@ export const Hotels = () => {
   /**
    * @description función para acción de botón y limpiar filtros.
    **/
-
   const clearFilter = () => {
+    setData(hotelsData);
     setDateFrom("");
     setDateTo("");
-    setCountry("");
-    setPrice("");
-    setSize("");
-    setData(hotelsData);
+    setCountry("Todos los países");
+    setPrice("Todos los precios");
+    setSize("Todos los tamaños");
   };
 
   /**
@@ -106,7 +112,7 @@ export const Hotels = () => {
               ? `Elegiste reservar desde ${dates[0]} hasta ${dates[1]} en ${country}`
               : ""}
           </p>
-          <form>
+            <form>
             <div className="filters">
               <div className="date-wrapper">
                 <label htmlFor="date-from">Ingreso</label>
@@ -127,11 +133,7 @@ export const Hotels = () => {
                 />
               </div>
               <SelectFilter
-                defaultValue="Todos los países"
-                firstValue="Argentina"
-                secondValue="Brasil"
-                thirdValue="Chile"
-                forthValue="Uruguay"
+                lista={countries}
                 filtrar={filteredHotelsByCountry}
                 stateFromDate={dateFrom}
                 stateToDate={dateTo}
@@ -140,11 +142,7 @@ export const Hotels = () => {
                 stateSizeFilter={size}
               />
               <SelectFilter
-                defaultValue="Cualquier precio"
-                firstValue="$"
-                secondValue="$$"
-                thirdValue="$$$"
-                forthValue="$$$$"
+                lista={prices}
                 filtrar={filteredHotelsByPrice}
                 stateFromDate={dateFrom}
                 stateToDate={dateTo}
@@ -153,11 +151,7 @@ export const Hotels = () => {
                 stateSizeFilter={size}
               />
               <SelectFilter
-                defaultValue="Cualquier tamaño"
-                firstValue="Hotel pequeño"
-                secondValue="Hotel mediano"
-                thirdValue="Hotel grande"
-                forthValue={undefined}
+                lista={sizes}
                 filtrar={filteredHotelsBySize}
                 stateFromDate={dateFrom}
                 stateToDate={dateTo}
@@ -165,16 +159,15 @@ export const Hotels = () => {
                 statePriceFilter={price}
                 stateSizeFilter={size}
               />
-
               <button
                 className="clear-filter"
-                type="reset"
+                type="submit"
                 onClick={clearFilter}
               >
                 Limpiar
               </button>
-            </div>
-          </form>
+              </div>
+            </form>
         </div>
       </div>
       <div className="hotels-container">
@@ -194,8 +187,6 @@ export const Hotels = () => {
             <Hotel
               hotel={hotel}
               key={i}
-              dateFromChosen={dateFrom}
-              dateToChosen={dateTo}
             />
           ))
         )}

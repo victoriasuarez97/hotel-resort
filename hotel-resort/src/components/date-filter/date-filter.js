@@ -24,7 +24,7 @@ export const DateFilter = ({
     const dateChosenAsUnix = new Date(dateChosen.replace(/-/g, "/")).getTime() + 86300000;
     const today = new Date().getTime()
 
-    if (dateChosenAsUnix < today) {
+    if (id === "date-from" && (dateChosenAsUnix < today)) {
       setOpenModal(true);
     } else {
       setAvailableDate(dateChosen);
@@ -69,7 +69,7 @@ export const DateFilter = ({
     let hotelsFiltered = hotelsData.filter((hotel) => {
       return (
         stateFromDate >= hotel.availabilityFrom &&
-        dateChosenAsUnix  <= hotel.availabilityTo
+        dateChosenAsUnix <= hotel.availabilityTo
       );
     });
 
@@ -89,9 +89,7 @@ export const DateFilter = ({
           <button onClick={handleClick}>Aceptar</button>
         </div>
       </div>
-      <div>
         <input type="date" value={availableDate} onChange={dateSelected} />
-      </div>
     </div>
   );
 };

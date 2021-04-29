@@ -16,9 +16,7 @@ import "./hotel.scss";
  **/
 
 export const Hotel = ({
-  hotel,
-  dateFromChosen,
-  dateToChosen
+  hotel
 }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -46,9 +44,7 @@ export const Hotel = ({
         <div className="price-wrapper">{prices}</div>
         <button
           onClick={() =>
-            dateFromChosen && dateToChosen
-              ? setShowModal(true)
-              : setShowModal(false)
+            setShowModal(true)
           }
         >
           Reservar
@@ -58,8 +54,6 @@ export const Hotel = ({
         hotel={hotel}
         showModal={showModal}
         setShowModal={setShowModal}
-        dateFromChosen={dateFromChosen}
-        dateToChosen={dateToChosen}
       />
     </div>
   );

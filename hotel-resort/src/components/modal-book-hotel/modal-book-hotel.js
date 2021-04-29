@@ -15,24 +15,11 @@ import "./modal-book-hotel.scss";
 export const ModalBookHotel = ({
   hotel,
   showModal,
-  setShowModal,
-  dateFromChosen,
-  dateToChosen,
+  setShowModal
 }) => {
   const [book, setBook] = useState(false);
   const closeModal = () => {
     setShowModal(false);
-  };
-
-  const formatUnix = (date) => {
-    const dateFormatted = new Date(date);
-    const newDate = `
-          ${dateFormatted.getDate()}
-          /
-          ${dateFormatted.getMonth() + 1}
-          /
-          ${dateFormatted.getYear() - 100}`;
-    return newDate;
   };
 
   return (
@@ -53,8 +40,6 @@ export const ModalBookHotel = ({
             <p className="hotel-chosen">El hotel que elegiste es:</p>
             <div className="hotel-chosen-data">
               <p className="hotel-name">{hotel.name}</p>
-              <p>{`Fecha de Ingreso: ${formatUnix(dateFromChosen)}`}</p>
-              <p>{`Fecha de Ingreso: ${formatUnix(dateToChosen)}`}</p>
               <p>{`En: ${hotel.city}, ${hotel.country}`}</p>
             </div>
             <div className="buttons-wrapper">
