@@ -57,8 +57,8 @@ export const DateFilter = ({
         return (
           !stateToDate
           ? hotel
-          : dateChosenAsUnix >= hotel.availabilityFrom &&
-          stateToDate <= hotel.availabilityTo
+          : (dateChosenAsUnix >= hotel.availabilityFrom &&
+          stateToDate <= hotel.availabilityTo)
         );
     });
 
@@ -68,8 +68,10 @@ export const DateFilter = ({
   const filterByToDate = (dateChosenAsUnix) => {
     let hotelsFiltered = hotelsData.filter((hotel) => {
       return (
-        stateFromDate >= hotel.availabilityFrom &&
-        dateChosenAsUnix <= hotel.availabilityTo
+        !stateFromDate
+        ? hotel
+        : (stateFromDate >= hotel.availabilityFrom &&
+        dateChosenAsUnix <= hotel.availabilityTo)
       );
     });
 
@@ -89,7 +91,7 @@ export const DateFilter = ({
           <button onClick={handleClick}>Aceptar</button>
         </div>
       </div>
-        <input type="date" value={availableDate} onChange={dateSelected} />
+      <input type="date" value={availableDate} onChange={dateSelected} />
     </div>
   );
 };

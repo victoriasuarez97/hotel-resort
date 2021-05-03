@@ -28,6 +28,7 @@ export const SelectFilter = ({
    **/
   const optionSelected = (e) => {
     setOption(e.target.value);
+
     if (lista[0] === "Todos los países") {
       filterByCountry(e);
     } else if (lista[0] === "Todos los precios") {
@@ -43,31 +44,29 @@ export const SelectFilter = ({
    * @param price Cargado con el price proveniente de data.js
    **/
   const matchPrice = (price) => {
-    let priceToMatch = price;
-
-    switch (priceToMatch) {
+    switch (price) {
       case 1:
-        priceToMatch = "$";
+        price = "$";
         break;
 
       case 2:
-        priceToMatch = "$$";
+        price = "$$";
         break;
 
       case 3:
-        priceToMatch = "$$$";
+        price = "$$$";
         break;
 
       case 4:
-        priceToMatch = "$$$$";
+        price = "$$$$";
         break;
 
       default:
-        priceToMatch = "Todos los precios";
+        price = "Todos los precios";
         break;
     }
 
-    return priceToMatch;
+    return price;
   };
 
   /**
@@ -110,9 +109,9 @@ export const SelectFilter = ({
           : matchHotelSize(hotel.rooms) === stateSizeFilter;
       })
       .filter((hotel) => {
-        return stateToDate
-          ? stateToDate < hotel.availabilityTo &&
-          stateFromDate > hotel.availabilityFrom
+        return stateFromDate && stateToDate
+          ? (stateFromDate >= hotel.availabilityFrom
+          && stateToDate <= hotel.availabilityTo)
           : hotel
       });
       
@@ -137,9 +136,9 @@ export const SelectFilter = ({
           : matchHotelSize(hotel.rooms) === stateSizeFilter;
       })
       .filter((hotel) => {
-        return stateToDate
-          ? stateToDate < hotel.availabilityTo &&
-          stateFromDate > hotel.availabilityFrom
+        return stateFromDate && stateToDate
+          ? (stateFromDate >= hotel.availabilityFrom
+          && stateToDate <= hotel.availabilityTo)
           : hotel
       });
 
@@ -164,9 +163,9 @@ export const SelectFilter = ({
           : matchPrice(hotel.price) === statePriceFilter;
       })
       .filter((hotel) => {
-        return stateToDate
-          ? stateToDate < hotel.availabilityTo &&
-          stateFromDate > hotel.availabilityFrom
+        return stateFromDate && stateToDate
+          ? (stateFromDate >= hotel.availabilityFrom
+          && stateToDate <= hotel.availabilityTo)
           : hotel
       });
 

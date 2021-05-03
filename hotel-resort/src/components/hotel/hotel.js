@@ -11,8 +11,6 @@ import "./hotel.scss";
 /**
  * @description componente para la card de los hoteles provenientes del data.js
  * @params {array} hotel, recibe la data de los hoteles desde su padre, hotel.js
- *         {number} dateFromChosen, recibe fecha seleccionada de ingreso desde su padre, hotel.js
- *         {number} dateToChosen, recibe fecha seleccionada de salida desde su padre, hotel.js
  **/
 
 export const Hotel = ({
@@ -21,7 +19,7 @@ export const Hotel = ({
   const [showModal, setShowModal] = useState(false);
 
   /**
-   * For loop para mostrar íconos de precio según el número proveniente
+   * @description For loop para mostrar íconos de precio según el número proveniente
    * de data.js de la propiedad price.
    **/
   const prices = [];

@@ -24,7 +24,7 @@ export const Hotels = () => {
 
   /**
    * @description constantes para definir opciones para cada select de filtros.
-   */
+  **/
   const countries = ["Todos los países", "Argentina", "Brasil", "Chile", "Uruguay"];
   const prices = ["Todos los precios", "$", "$$", "$$$", "$$$$"];
   const sizes = ["Todos los tamaños", "Hotel pequeño", "Hotel mediano", "Hotel grande"];
@@ -34,7 +34,7 @@ export const Hotels = () => {
    * @param {array} hotelsFiltered representa los hoteles filtrados provenientes
    *        del componente Select, recibidos desde la prop filtrar y seteado con el estado
    *        del total de los hoteles
-   *        {string} state representa el input seleccionado por el usuario,
+   *        {string} ...Selected representa el input seleccionado por el usuario,
    *        para que se tenga en cuenta con el resto de los filtros.
    **/
   const filteredHotelsByFromDate = (hotelsFiltered, dateFromSelected) => {
@@ -108,9 +108,11 @@ export const Hotels = () => {
         <div className="filter-wrapper">
           <p className="filter-header">Elegí según tu preferencia :)</p>
           <p className="filter-description">
-            {dateTo
+            {
+              dateFrom && dateTo
               ? `Elegiste reservar desde ${dates[0]} hasta ${dates[1]} en ${country}`
-              : ""}
+              : ""
+            }
           </p>
             <form>
             <div className="filters">
@@ -166,30 +168,32 @@ export const Hotels = () => {
               >
                 Limpiar
               </button>
-              </div>
-            </form>
+            </div>
+          </form>
         </div>
       </div>
       <div className="hotels-container">
-        {!data.length ? (
-          <div className="not-available">
-            <img src={SadFace} alt="sad face" className="sad-face-icon" />
-            <p className="title-not-available">
-              No hay hoteles disponibles para mostrar con estas opciones
-            </p>
-            <p className="subtitle-not-available">
-              Por favor, cambiá alguna de las opciones previamente seleccionadas
-              para que puedas seguir viendo nuestra selección de hoteles
-            </p>
-          </div>
-        ) : (
-          data.map((hotel, i) => (
-            <Hotel
-              hotel={hotel}
-              key={i}
-            />
-          ))
-        )}
+        {
+          !data.length ? (
+            <div className="not-available">
+              <img src={SadFace} alt="sad face" className="sad-face-icon" />
+              <p className="title-not-available">
+                No hay hoteles disponibles para mostrar con estas opciones
+              </p>
+              <p className="subtitle-not-available">
+                Por favor, cambiá alguna de las opciones previamente seleccionadas
+                para que puedas seguir viendo nuestra selección de hoteles
+              </p>
+            </div>
+          ) : (
+            data.map((hotel, i) => (
+              <Hotel
+                hotel={hotel}
+                key={i}
+              />
+            ))
+          )
+        }
       </div>
     </>
   );
