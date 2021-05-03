@@ -15,11 +15,11 @@ After you have cloned this repo:
 
 ### Credits
 
-Sad icon
+Sad Face icon
 - Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
 
-Cool icon
+Cool Face icon
 - Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
 
-Straight icon
+Straight Face icon
 - Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
