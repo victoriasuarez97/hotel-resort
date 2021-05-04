@@ -123,6 +123,9 @@ export const Hotels = () => {
                   filtrar={filteredHotelsByFromDate}
                   stateFromDate={dateFrom}
                   stateToDate={dateTo}
+                  stateCountryFilter={country}
+                  statePriceFilter={price}
+                  stateSizeFilter={size}
                 />
               </div>
               <div className="date-wrapper">
@@ -132,6 +135,9 @@ export const Hotels = () => {
                   filtrar={filteredHotelsByToDate}
                   stateFromDate={dateFrom}
                   stateToDate={dateTo}
+                  stateCountryFilter={country}
+                  statePriceFilter={price}
+                  stateSizeFilter={size}
                 />
               </div>
               <SelectFilter

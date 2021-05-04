@@ -9,7 +9,10 @@ export const DateFilter = ({
   id,
   filtrar,
   stateFromDate,
-  stateToDate
+  stateToDate,
+  stateCountryFilter,
+  statePriceFilter,
+  stateSizeFilter
 }) => {
   let [availableDate, setAvailableDate] = useState("");
   const [openModal, setOpenModal] = useState(false);
@@ -60,6 +63,21 @@ export const DateFilter = ({
           : (dateChosenAsUnix >= hotel.availabilityFrom &&
           stateToDate <= hotel.availabilityTo)
         );
+    })
+    .filter((hotel) => {
+      return stateCountryFilter === "Todos los países"
+      ? hotel
+      : hotel.country === stateCountryFilter;
+    })
+    .filter((hotel) => {
+      return statePriceFilter === "Todos los precios"
+      ? hotel
+      : hotel.price === statePriceFilter;
+    })
+    .filter((hotel) => {
+      return stateSizeFilter === "Todos los tamaños"
+      ? hotel
+      : hotel.rooms === stateSizeFilter;
     });
 
     filtrar(hotelsFiltered, dateChosenAsUnix);
@@ -73,6 +91,21 @@ export const DateFilter = ({
         : (stateFromDate >= hotel.availabilityFrom &&
         dateChosenAsUnix <= hotel.availabilityTo)
       );
+    })
+    .filter((hotel) => {
+      return stateCountryFilter === "Todos los países"
+      ? hotel
+      : hotel.country === stateCountryFilter;
+    })
+    .filter((hotel) => {
+      return statePriceFilter === "Todos los precios"
+      ? hotel
+      : hotel.price === statePriceFilter;
+    })
+    .filter((hotel) => {
+      return stateSizeFilter === "Todos los tamaños"
+      ? hotel
+      : hotel.rooms === stateSizeFilter;
     });
 
     filtrar(hotelsFiltered, dateChosenAsUnix);
